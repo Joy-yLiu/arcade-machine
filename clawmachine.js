@@ -322,10 +322,14 @@ export class ClawMachine extends ClawMachine_base
     const t = this.t = this.uniforms.animation_time/1000;
 
     // !!! Draw background
-    let floor_transform = Mat4.translation(0, 0, 0).times(Mat4.scale(20, 0.01, 5));
+    let floor_transform = Mat4.translation(0, 0, 0).times(Mat4.scale(15, 0.01, 8));
     this.shapes.box.draw( caller, this.uniforms, floor_transform, this.materials.checkerboard);
-    let wall_transform = Mat4.translation(0, 0, -5).times(Mat4.scale(20, 15, 0.01));
+    let wall_transform = Mat4.translation(0, 0, -8).times(Mat4.scale(15, 15, 0.01));
     this.shapes.box.draw( caller, this.uniforms, wall_transform,  { ...this.materials.plastic, color: blackboard_color } );
+    let l_wall_transform = Mat4.translation(-15, 0, 0).times(Mat4.scale(0.01, 15, 8));
+    this.shapes.box.draw( caller, this.uniforms, l_wall_transform,  { ...this.materials.plastic, color: blackboard_color } );
+    let r_wall_transform = Mat4.translation(15, 0, 0).times(Mat4.scale(0.01, 15, 8));
+    this.shapes.box.draw( caller, this.uniforms, r_wall_transform,  { ...this.materials.plastic, color: blackboard_color } );
 
     //claw machine walls
     for (let i = 0; i < this.wallTransforms.length; i++) {
